@@ -1,36 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 /* ==========================================================================
    eRTMAC-NWIS — Design System & Stylesheet
-   Theme: High-Tech Petroleum Operations Console (Dark Mode)
+
+   Theme: Minimal Industrial Operations Console
+   Palette:
+   #FFFFFF — White
+   #D4DDE2 — Light Blue Grey
+   #A2A2A2 — Neutral Grey
+   #5C7E8F — Slate Blue
+   #000000 — Black
+
+   Design Focus:
+   Colour • Texture • Typography • Shape • Spacing • Balance
+   ========================================================================== */
+
+
+/* ==========================================================================
+   DESIGN TOKENS
    ========================================================================== */
 
 :root {
-  --bg-primary: #0a0e17;
-  --bg-secondary: #111827;
-  --bg-tertiary: #1f2937;
-  --bg-card: rgba(17, 24, 39, 0.85);
-  --bg-card-hover: rgba(31, 41, 55, 0.95);
-  --border-subtle: rgba(75, 85, 99, 0.35);
-  --border-glow: rgba(14, 165, 233, 0.3);
+  /* Colours */
+  --white: #FFFFFF;
+  --light-grey: #D4DDE2;
+  --grey: #A2A2A2;
+  --slate: #5C7E8F;
+  --black: #000000;
 
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
-  --text-dim: #6b7280;
+  /* Backgrounds */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F7F8;
+  --bg-tertiary: #D4DDE2;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F7F9FA;
 
-  --accent-cyan: #06b6d4;
-  --accent-blue: #0284c7;
-  --accent-teal: #10b981;
-  --accent-amber: #f59e0b;
-  --accent-red: #ef4444;
-  --accent-purple: #8b5cf6;
+  /* Borders */
+  --border-subtle: #D4DDE2;
+  --border-medium: #A2A2A2;
+  --border-strong: #5C7E8F;
+  --border-black: #000000;
 
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* Text */
+  --text-main: #000000;
+  --text-secondary: #5C7E8F;
+  --text-muted: #A2A2A2;
+  --text-light: #FFFFFF;
 
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -4px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 15px rgba(6, 182, 212, 0.25);
+  /* Accent */
+  --accent: #5C7E8F;
+  --accent-light: #D4DDE2;
+
+  /* Typography */
+--font-sans:
+    'Montserrat',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  --font-mono:
+    'JetBrains Mono',
+    'Fira Code',
+    Consolas,
+    monospace;
+
+  /* Shape */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+
+  /* Shadows — deliberately subtle */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 3px 10px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.10);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
 }
+
+
+/* ==========================================================================
+   GLOBAL RESET
+   ========================================================================== */
 
 * {
   box-sizing: border-box;
@@ -38,235 +102,662 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: var(--font-sans);
+    font-family: 'Montserrat', sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-main);
   line-height: 1.5;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Custom Scrollbars */
+
+/* ==========================================================================
+   SCROLLBARS
+   ========================================================================== */
+
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-secondary);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #374151;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #4b5563;
+  background: var(--grey);
+  border-radius: 4px;
 }
 
-/* Typography Helpers */
-h1, h2, h3, h4 {
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate);
+}
+
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--black);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #fff;
+  line-height: 1.25;
 }
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
 .mono {
   font-family: var(--font-mono);
 }
 
-/* Cards & Glassmorphism */
-.glass-panel {
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  box-shadow: var(--shadow-md);
-  transition: all 0.2s ease-in-out;
-}
-.glass-panel:hover {
-  border-color: rgba(14, 165, 233, 0.4);
+.text-muted {
+  color: var(--text-muted);
 }
 
-/* Badges */
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+
+/* ==========================================================================
+   LINKS
+   ========================================================================== */
+
+a {
+  color: var(--slate);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--black);
+}
+
+
+/* ==========================================================================
+   GLASS PANEL / CARDS
+   ========================================================================== */
+
+/*
+   Original glassmorphism removed.
+
+   Cards are now flat, clean and structured with:
+   - White surface
+   - Solid border
+   - Minimal shadow
+   - No backdrop blur
+   - No gradient
+*/
+
+.glass-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal),
+    background-color var(--transition-normal);
+}
+
+.glass-panel:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+
+/* ==========================================================================
+   BADGES
+   ========================================================================== */
+
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
-  border-radius: 9999px;
-  font-size: 0.75rem;
+  gap: 5px;
+
+  padding: 4px 9px;
+
+  border-radius: var(--radius-sm);
+
+  font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+
+  border: 1px solid var(--border-subtle);
 }
+
+
+/* Elevated */
+
 .badge-elevated {
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
 }
+
+
+/* Normal */
+
 .badge-normal {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: var(--light-grey);
+  color: var(--black);
+  border-color: var(--slate);
 }
+
+
+/* Simulated */
+
 .badge-simulated {
-  background: rgba(245, 158, 11, 0.15);
-  color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  background: var(--white);
+  color: var(--slate);
+  border-color: var(--slate);
 }
+
+
+/* Review */
+
 .badge-review {
-  background: rgba(245, 158, 11, 0.25);
-  color: #fef08a;
-  border: 1px solid #eab308;
-  animation: pulse-border 2s infinite;
+  background: var(--light-grey);
+  color: var(--black);
+  border: 1px solid var(--black);
 }
 
-@keyframes pulse-border {
-  0%, 100% { border-color: rgba(234, 179, 8, 0.4); }
-  50% { border-color: rgba(234, 179, 8, 1); box-shadow: 0 0 8px rgba(234, 179, 8, 0.5); }
+
+/* ==========================================================================
+   EVENT TYPES
+   ========================================================================== */
+
+/*
+   All previous red/orange/pink/purple/green/yellow colours removed.
+
+   Events now use the same restrained palette.
+*/
+
+.event-mud_loss {
+  color: var(--black);
+  border-color: var(--black);
+  background: var(--white);
 }
 
-/* Event Types Styling */
-.event-mud_loss { color: #f87171; border-color: rgba(248, 113, 113, 0.4); background: rgba(239, 68, 68, 0.12); }
-.event-stuck_pipe { color: #fb923c; border-color: rgba(251, 146, 60, 0.4); background: rgba(249, 115, 22, 0.12); }
-.event-kick { color: #ec4899; border-color: rgba(236, 72, 153, 0.4); background: rgba(236, 72, 153, 0.12); }
-.event-overpressure { color: #c084fc; border-color: rgba(192, 132, 252, 0.4); background: rgba(168, 85, 247, 0.12); }
-.event-torque_spike { color: #eab308; border-color: rgba(234, 179, 8, 0.4); background: rgba(234, 179, 8, 0.12); }
-.event-cementing { color: #38bdf8; border-color: rgba(56, 189, 248, 0.4); background: rgba(14, 165, 233, 0.12); }
-.event-fishing { color: #a3e635; border-color: rgba(163, 230, 53, 0.4); background: rgba(132, 204, 22, 0.12); }
-.event-npt { color: #94a3b8; border-color: rgba(148, 163, 184, 0.4); background: rgba(100, 116, 139, 0.12); }
+.event-stuck_pipe {
+  color: var(--slate);
+  border-color: var(--slate);
+  background: var(--light-grey);
+}
 
-/* Buttons */
+.event-kick {
+  color: var(--black);
+  border-color: var(--grey);
+  background: var(--white);
+}
+
+.event-overpressure {
+  color: var(--black);
+  border-color: var(--black);
+  background: var(--light-grey);
+}
+
+.event-torque_spike {
+  color: var(--slate);
+  border-color: var(--slate);
+  background: var(--white);
+}
+
+.event-cementing {
+  color: var(--black);
+  border-color: var(--slate);
+  background: var(--light-grey);
+}
+
+.event-fishing {
+  color: var(--slate);
+  border-color: var(--grey);
+  background: var(--white);
+}
+
+.event-npt {
+  color: var(--grey);
+  border-color: var(--grey);
+  background: var(--bg-secondary);
+}
+
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 8px 14px;
+  gap: 7px;
+
+  padding: 9px 15px;
+
+  font-family: inherit;
   font-size: 0.875rem;
   font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.15s ease;
+
+  border-radius: var(--radius-md);
   border: 1px solid transparent;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+
+  white-space: nowrap;
 }
+
+
+/* Primary */
+
 .btn-primary {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  color: #fff;
-  border-color: #38bdf8;
-  box-shadow: 0 0 10px rgba(2, 132, 199, 0.3);
+  background: var(--slate);
+  color: var(--white);
+  border-color: var(--slate);
+  box-shadow: none;
 }
+
 .btn-primary:hover {
-  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
-  box-shadow: 0 0 15px rgba(2, 132, 199, 0.5);
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+  box-shadow: none;
 }
+
+.btn-primary:active {
+  background: var(--black);
+}
+
+
+/* Secondary */
+
 .btn-secondary {
-  background: #1f2937;
-  color: var(--text-main);
-  border-color: #374151;
+  background: var(--white);
+  color: var(--black);
+  border-color: var(--black);
 }
+
 .btn-secondary:hover {
-  background: #374151;
-  border-color: #4b5563;
+  background: var(--light-grey);
+  color: var(--black);
+  border-color: var(--black);
 }
+
+
+/* Danger */
+
 .btn-danger {
-  background: rgba(239, 68, 68, 0.2);
-  color: #fca5a5;
-  border-color: rgba(239, 68, 68, 0.4);
+  background: var(--white);
+  color: var(--black);
+  border-color: var(--black);
 }
+
 .btn-danger:hover {
-  background: rgba(239, 68, 68, 0.35);
+  background: var(--black);
+  color: var(--white);
 }
 
-/* Form Controls */
-.input-text, .select-input {
+
+/* Disabled */
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+/* ==========================================================================
+   FORM CONTROLS
+   ========================================================================== */
+
+.input-text,
+.select-input {
   width: 100%;
-  background: #111827;
-  border: 1px solid #374151;
-  color: #f3f4f6;
-  padding: 8px 12px;
-  border-radius: 8px;
+
+  background: var(--white);
+  color: var(--black);
+
+  border: 1px solid var(--grey);
+  border-radius: var(--radius-md);
+
+  padding: 9px 12px;
+
+  font-family: inherit;
   font-size: 0.875rem;
-  transition: border-color 0.15s ease;
-}
-.input-text:focus, .select-input:focus {
-  outline: none;
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2);
+
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
-/* Leaflet Container & Markers */
+.input-text:hover,
+.select-input:hover {
+  border-color: var(--slate);
+}
+
+.input-text:focus,
+.select-input:focus {
+  outline: none;
+
+  border-color: var(--black);
+
+  box-shadow: 0 0 0 2px var(--light-grey);
+}
+
+.input-text::placeholder {
+  color: var(--grey);
+}
+
+
+/* ==========================================================================
+   LABELS
+   ========================================================================== */
+
+label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: var(--black);
+
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+
+/* ==========================================================================
+   TABLES
+   ========================================================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+}
+
+th {
+  padding: 11px 12px;
+
+  background: var(--light-grey);
+  color: var(--black);
+
+  border-bottom: 1px solid var(--black);
+
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+td {
+  padding: 11px 12px;
+
+  color: var(--black);
+
+  border-bottom: 1px solid var(--light-grey);
+
+  font-size: 0.875rem;
+}
+
+tr:hover td {
+  background: var(--bg-secondary);
+}
+
+
+/* ==========================================================================
+   DIVIDERS
+   ========================================================================== */
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--light-grey);
+  margin: var(--space-xl) 0;
+}
+
+
+/* ==========================================================================
+   LEAFLET MAP
+   ========================================================================== */
+
 .leaflet-container {
   width: 100%;
   height: 100%;
-  border-radius: 12px;
-  background: #0b0f19 !important;
-}
-.leaflet-tile-pane {
-  filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3);
-}
-.leaflet-popup-content-wrapper {
-  background: rgba(17, 24, 39, 0.95) !important;
-  color: #f3f4f6 !important;
-  backdrop-filter: blur(8px);
-  border: 1px solid #374151;
-  border-radius: 8px !important;
-}
-.leaflet-popup-tip {
-  background: rgba(17, 24, 39, 0.95) !important;
+
+  background: var(--bg-secondary) !important;
+
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+
+  overflow: hidden;
 }
 
-/* Custom Marker Styling & Pulse for Map */
+
+/*
+   Removed the previous dark/inverted map filter.
+
+   The map now displays naturally, which keeps geographic information
+   readable and prevents the interface from feeling visually heavy.
+*/
+
+.leaflet-tile-pane {
+  filter: none;
+}
+
+
+/* Map popup */
+
+.leaflet-popup-content-wrapper {
+  background: var(--white) !important;
+  color: var(--black) !important;
+
+  border: 1px solid var(--black);
+  border-radius: var(--radius-md) !important;
+
+  box-shadow: var(--shadow-md);
+}
+
+.leaflet-popup-content {
+  color: var(--black);
+}
+
+.leaflet-popup-tip {
+  background: var(--white) !important;
+}
+
+
+/* ==========================================================================
+   CUSTOM MAP MARKERS
+   ========================================================================== */
+
 .custom-proposed-marker {
   cursor: grab;
 }
+
 .custom-proposed-marker:active {
   cursor: grabbing;
 }
 
+
+/*
+   Removed aggressive glowing beacon animation.
+
+   A restrained pulse is retained for functional map feedback.
+*/
+
 @keyframes rig-pulse {
   0% {
-    transform: scale(0.9);
-    opacity: 0.9;
+    transform: scale(0.95);
+    opacity: 0.8;
   }
+
   50% {
-    transform: scale(1.6);
-    opacity: 0.15;
+    transform: scale(1.25);
+    opacity: 0.35;
   }
+
   100% {
-    transform: scale(0.9);
-    opacity: 0.9;
+    transform: scale(0.95);
+    opacity: 0.8;
   }
 }
 
 @keyframes beacon-glow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(245, 158, 11, 0.8), 0 0 30px rgba(245, 158, 11, 0.4);
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px var(--slate);
   }
+
   50% {
-    box-shadow: 0 0 25px rgba(245, 158, 11, 1), 0 0 50px rgba(245, 158, 11, 0.7);
+    box-shadow: 0 0 0 3px var(--light-grey);
   }
 }
 
-/* Modals */
+
+/* ==========================================================================
+   MODALS
+   ========================================================================== */
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(6px);
+
+  background: rgba(0, 0, 0, 0.45);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   z-index: 1000;
-  padding: 16px;
+
+  padding: var(--space-lg);
 }
+
 .modal-content {
-  background: #111827;
-  border: 1px solid #374151;
-  border-radius: 16px;
+  background: var(--white);
+
+  border: 1px solid var(--black);
+  border-radius: var(--radius-lg);
+
   width: 100%;
   max-width: 680px;
   max-height: 90vh;
+
   overflow-y: auto;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+
+  box-shadow: var(--shadow-lg);
+}
+
+
+/* ==========================================================================
+   MODAL HEADER / BODY / FOOTER
+   ========================================================================== */
+
+.modal-header {
+  padding: var(--space-lg) var(--space-xl);
+
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.modal-body {
+  padding: var(--space-xl);
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+
+  padding: var(--space-lg) var(--space-xl);
+
+  border-top: 1px solid var(--light-grey);
+}
+
+
+/* ==========================================================================
+   SELECTION
+   ========================================================================== */
+
+::selection {
+  background: var(--light-grey);
+  color: var(--black);
+}
+
+
+/* ==========================================================================
+   FOCUS ACCESSIBILITY
+   ========================================================================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--slate);
+  outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE SPACING
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .glass-panel {
+    border-radius: var(--radius-md);
+  }
+
+  .modal-content {
+    max-height: 94vh;
+  }
+
+  .modal-body {
+    padding: var(--space-lg);
+  }
 }
